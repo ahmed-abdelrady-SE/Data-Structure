@@ -4,7 +4,7 @@ impliminting some of the most Popular functions on the Singly Linked List , doub
 
 ## Functions : 
 
-- Add from Head (`funcname`)
+- Add from Head (`AddFromHead`)
 - Add from Tail (`funcname`)
 - Delete from Head (`funcname`)
 - Delete from Tail (`funcname`)
