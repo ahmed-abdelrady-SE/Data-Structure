@@ -28,21 +28,47 @@ class LinkedList{
         return !head;
     }
 
+    bool found(int data){
+        node* temp = head;
+        while(temp != nullptr){
+            if(temp -> data = data) 
+                return true;
+            temp = temp -> next;
+        }
+        return false;
+    }
+
     void AddFromHead(int value){
-        node* temp = new node();
-        temp -> data = value;
+        node* newnode = new node();
+        newnode -> data = value;
 
         if( is_empty() ){   //case 1 : adding the first ever node
-            temp -> next = nullptr;
-            head = temp;
+            newnode -> next = nullptr;
+            head = newnode;
         }
         else{    // case 2 : adding to an existing nodes
-            temp -> next = head;
-            head = temp;
+            newnode -> next = head;
+            head = newnode;
         }
     }
 
-    
+    void AddFromTail(int value){
+        node * newnode = new node();
+        node *temp = head;    // to reach the tail
+        newnode -> data = value;
+
+        if( is_empty() ){   //case 1 : adding the first ever node
+            newnode -> next = nullptr;
+            head = newnode;
+        }
+        else{
+            while(temp -> next != nullptr){  // so we stop at the last node
+                temp = temp -> next;
+            } 
+            temp ->next = newnode;
+            newnode -> next = nullptr;
+        }
+    }
 
 };
 
