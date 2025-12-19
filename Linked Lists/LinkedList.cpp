@@ -145,21 +145,4 @@ class LinkedList{
 
 int main(){
     LinkedList l;
-    l.AddFromHead(5);
-    l.AddFromHead(4);
-    l.AddFromHead(3);
-    l.AddFromHead(2);
-    l.AddFromHead(1);
-    l.AddFromTail(6);
-    l.AddFromTail(7);
-    l.AddFromTail(8);
-    l.AddFromTail(9);
-    l.AddFromTail(10);
-    l.PrintList();
-    l.SearchForValue(11);
-    l.SearchForValue(8);
-    l.deleteValue(7);
-    l.DeleteFromHead();
-    l.DeleteFromTail();
-    l.PrintList();
 }

@@ -9,5 +9,5 @@ impliminting some of the most Popular functions on the Singly Linked List , doub
 - Delete from Head (`DeleteFromHead`)
 - Delete from Tail (`DeleteFromTail`)
 - Delete Specific Value (`DeleteValue`)
-- Search For Value (`funcname`)
-- Print List (`funcname`)
+- Search For Value (`SearchForValue`)
+- Print List (`PrintList`)
