@@ -5,9 +5,9 @@ impliminting some of the most Popular functions on the Singly Linked List , doub
 ## Functions : 
 
 - Add from Head (`AddFromHead`)
-- Add from Tail (`funcname`)
-- Delete from Head (`funcname`)
-- Delete from Tail (`funcname`)
-- Delete Spicefic Value (`funcname`)
+- Add from Tail (`AddFromTail`)
+- Delete from Head (`DeleteFromHead`)
+- Delete from Tail (`DeleteFromTail`)
+- Delete Specific Value (`DeleteValue`)
 - Search For Value (`funcname`)
 - Print List (`funcname`)

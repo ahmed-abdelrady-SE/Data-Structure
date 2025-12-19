@@ -31,7 +31,7 @@ class LinkedList{
     bool found(int data){
         node* temp = head;
         while(temp != nullptr){
-            if(temp -> data = data) 
+            if(temp -> data == data) 
                 return true;
             temp = temp -> next;
         }
@@ -41,15 +41,8 @@ class LinkedList{
     void AddFromHead(int value){
         node* newnode = new node();
         newnode -> data = value;
-
-        if( is_empty() ){   //case 1 : adding the first ever node
-            newnode -> next = nullptr;
-            head = newnode;
-        }
-        else{    // case 2 : adding to an existing nodes
-            newnode -> next = head;
-            head = newnode;
-        }
+        newnode -> next = head;
+        head = newnode;
     }
 
     void AddFromTail(int value){
@@ -67,6 +60,61 @@ class LinkedList{
             } 
             temp ->next = newnode;
             newnode -> next = nullptr;
+        }
+    }
+
+    void DeleteFromHead(){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        else {
+            node* delptr = head;
+            head = head->next;
+            delete delptr;
+        }        
+    }
+
+    void DeleteFromTail(){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+
+        if(head-> next == nullptr ) { delete head ; head = nullptr; }
+
+        else{
+
+            node* prevdel = head; 
+
+            while (prevdel->next->next != nullptr) {
+                prevdel = prevdel->next;
+            }
+
+            delete prevdel -> next;
+            prevdel -> next = nullptr;
+
+        }
+
+    }
+
+    void deleteValue(int value){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        
+        node* delptr = head;
+
+        if(head->data == value){ // first case : if value in head
+            head = head->next;
+            delete delptr;
+        } 
+
+        else{   // second case : if value in any other node
+            node* prev = nullptr;
+            
+            while (delptr != nullptr && delptr->data != value) {
+                prev = delptr;       
+                delptr = delptr->next;
+            }
+
+            if(delptr == nullptr) {return void ( cout << "Value " << value << " not found in the list.\n" ); }
+
+            prev->next = delptr->next;
+            delete delptr; 
+
         }
     }
 
