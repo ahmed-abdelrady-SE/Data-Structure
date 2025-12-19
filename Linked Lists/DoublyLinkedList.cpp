@@ -58,6 +58,29 @@ class DLinkedList{
         }
     }
 
+    void AddFromTail(int value){
+        node* newnode = new node();
+        node* temp = head;  // to reach the tail
+
+        if(is_empty()){  // case 1 the list is empty
+            AddFromHead(value);
+        }
+
+        else{
+
+            while(temp != nullptr){     // reaching the tail with the temp ptr
+                temp = temp->next;
+            }
+
+            newnode -> data = value;
+            newnode -> next = nullptr;
+            newnode -> prev = temp;
+            temp -> next  = newnode;
+
+        }
+
+    }
+
     
 
 
