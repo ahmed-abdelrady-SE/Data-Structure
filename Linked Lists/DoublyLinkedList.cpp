@@ -99,6 +99,67 @@ class DLinkedList{
         }
     }
 
+    void DeleteFromTail(){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        else{
+            node* delptr = head;
+            if(head->next == nullptr){
+                head = nullptr;
+            }
+            else{
+                while(delptr->next != nullptr){
+                    delptr = delptr -> next;
+                }
+                delptr->prev->next = nullptr;
+            }
+            delete delptr;
+        }
+    }
+
+    void deleteValue(int value){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        
+        else if(head-> data == value){ DeleteFromHead() ;} 
+
+        else{
+
+            node* delptr = head;
+            while(delptr->data != value && delptr != nullptr){
+                delptr = delptr -> next;
+            }
+
+            if(delptr == nullptr) { return void( cout << "Value : " << value << " not found in the list.\n" ); }
+            
+            else{
+                cout << "The value has been deleted succsifully";
+                // we have two cases eathir the middle node or the last node
+                if(delptr->next == nullptr){
+                    delptr->prev->next = nullptr;
+                }
+                else{
+                    delptr->prev->next = delptr -> next;
+                    delptr->next->prev = delptr -> prev;
+                }
+
+                delete delptr;
+
+            }
+        }
+        
+    }
+
+    void SearchForValue(int value){
+        
+    }
+
+    void PrintList(){
+        node* temp = head;
+        while(temp != nullptr){
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << "\n";
+    }
 
 
 };
