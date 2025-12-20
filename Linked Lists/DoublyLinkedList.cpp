@@ -68,7 +68,7 @@ class DLinkedList{
 
         else{
 
-            while(temp != nullptr){     // reaching the tail with the temp ptr
+            while(temp->next != nullptr){     // reaching the tail with the temp ptr
                 temp = temp->next;
             }
 
@@ -81,7 +81,28 @@ class DLinkedList{
 
     }
 
-    
+    void DeleteFromHead(){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        else{
+            node* delptr = head;
+
+            if(head->next == nullptr){
+                head = nullptr;
+            }
+
+            else{
+                head = head->next;
+                head -> prev = nullptr;
+            } 
+
+            delete delptr;
+        }
+    }
+
 
 
 };
+
+int main(){
+    DLinkedList DLL;
+}
