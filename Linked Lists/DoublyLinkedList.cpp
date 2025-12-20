@@ -149,7 +149,17 @@ class DLinkedList{
     }
 
     void SearchForValue(int value){
+        if(is_empty()){ return void( cout << "the list is empty\n" ); }
+        if( !found(value) ) { return void( cout << "the value doesn't exist.\n"  ); }
         
+        node* temp = head;
+
+        while(temp != nullptr && temp->data != value){
+            temp = temp -> next;
+        }
+
+        return void ( cout << "the value : \"" << value << "\" is found !\n" );
+
     }
 
     void PrintList(){
