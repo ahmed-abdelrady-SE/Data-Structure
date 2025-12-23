@@ -43,7 +43,7 @@ class DLinkedList{
     int count(){
         int cnt = 0;
         node* temp = head;
-        while(temp->next != nullptr){
+        while(temp!= nullptr){
             cnt++;
             temp = temp->next;
         }
@@ -127,6 +127,7 @@ class DLinkedList{
     }
 
     void deleteValue(int value){
+
         if(is_empty()){ return void( cout << "the list is empty\n" ); }
         
         else if(head-> data == value){ DeleteFromHead() ;} 
@@ -134,7 +135,7 @@ class DLinkedList{
         else{
 
             node* delptr = head;
-            while(delptr->data != value && delptr != nullptr){
+            while(delptr != nullptr && delptr->data != value ){
                 delptr = delptr -> next;
             }
 
@@ -186,5 +187,5 @@ class DLinkedList{
 };
 
 int main(){
-    DLinkedList DLL;
+    DLinkedList DLL;    
 }
