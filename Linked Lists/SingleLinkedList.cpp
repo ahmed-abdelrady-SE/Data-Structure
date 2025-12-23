@@ -39,9 +39,9 @@ class LinkedList{
     }
     
     int count(){
-        int cnt;
+        int cnt = 0;
         node* temp = head;
-        while(temp->next != nullptr){
+        while(temp != nullptr){
             cnt++;
             temp = temp->next;
         }
@@ -144,7 +144,7 @@ class LinkedList{
 
     void PrintList(){
         node* temp = head;
-        cout << "This list has " << count() << "nodes :-\n";
+        cout << "This list has " << count() << " nodes :-\n";
         while(temp != nullptr){
             cout << temp->data << " ";
             temp = temp->next;
