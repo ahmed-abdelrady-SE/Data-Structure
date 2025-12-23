@@ -144,7 +144,7 @@ class LinkedList{
 
     void PrintList(){
         node* temp = head;
-        cout << "This list has " << count << "nodes :-\n";
+        cout << "This list has " << count() << "nodes :-\n";
         while(temp != nullptr){
             cout << temp->data << " ";
             temp = temp->next;

@@ -41,7 +41,7 @@ class DLinkedList{
     }
 
     int count(){
-        int cnt;
+        int cnt = 0;
         node* temp = head;
         while(temp->next != nullptr){
             cnt++;
@@ -174,7 +174,7 @@ class DLinkedList{
 
     void PrintList(){
         node* temp = head;
-        cout << "This list has " << count << "nodes :-\n";
+        cout << "This list has " << count() << " nodes :-\n";
         while(temp != nullptr){
             cout << temp->data << " ";
             temp = temp->next;
