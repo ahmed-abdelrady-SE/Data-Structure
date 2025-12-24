@@ -2,7 +2,7 @@
 using namespace std;
 
 class node{
-
+    
 };
 
 class cLinkedList{
