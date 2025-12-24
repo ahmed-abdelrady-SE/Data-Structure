@@ -108,8 +108,7 @@ class LinkedList{
         node* delptr = head;
 
         if(head->data == value){ // first case : if value in head
-            head = head->next;
-            delete delptr;
+            DeleteFromHead();
         } 
 
         else{   // second case : if value in any other node
@@ -161,5 +160,5 @@ class LinkedList{
 };
 
 int main(){
-    LinkedList l;
+    LinkedList LL;
 }
