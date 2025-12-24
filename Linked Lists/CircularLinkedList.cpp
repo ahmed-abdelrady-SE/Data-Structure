@@ -1,73 +1,83 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class node{      // the main class for the nodes in the linked list 
-    
-    public:
+class node
+{ // the main class for the nodes in the linked list
 
-    int data;  
-    node* next;
+public:
+    int data;
+    node *next;
 
-    node(){
+    node()
+    {
         data = 0;
         next = nullptr;
     }
-
 };
 
-class cLinkedList{
+class cLinkedList
+{
 
-    public :
+public:
+    node *head;
 
-    node* head;
-
-    cLinkedList(){
+    cLinkedList()
+    {
         head = nullptr;
     }
 
-    bool is_empty(){
+    bool is_empty()
+    {
         return !head;
     }
 
-    bool found(int data){
-        node* temp = head;
-        if (is_empty()) return false;
-        do{
-            if(temp -> data == data) 
+    bool found(int data)
+    {
+        node *temp = head;
+        if (is_empty())
+            return false;
+        do
+        {
+            if (temp->data == data)
                 return true;
-            temp = temp -> next;
-        }
-        while(temp!= head);
+            temp = temp->next;
+        } while (temp != head);
         return false;
     }
 
-    int count(){
-        if(is_empty()) return 0;
+    int count()
+    {
+        if (is_empty())
+            return 0;
 
         int cnt = 0;
-        node* temp = head;
+        node *temp = head;
 
-        do{
-            cnt ++;
-            temp = temp -> next;
-        }
-        while(temp != head);
+        do
+        {
+            cnt++;
+            temp = temp->next;
+        } while (temp != head);
         return cnt;
     }
 
-    void AddFromHead(int data){
-        node* newnode = new node();
-        newnode -> data = data;
+    void AddFromHead(int data)
+    {
+        node *newnode = new node();
+        newnode->data = data;
 
-        if( is_empty() ){
+        if (is_empty())
+        {
             head = newnode;
-            head -> next = head;
+            head->next = head;
         }
 
-        else{    // moving the head to the new head and adjusting the new head -> next and adjusting the next of the last node
-            node* temp = head;
-            while(temp -> next != head ){ // because the list is linked at the end to the head again so there is no "nullptr"
-                temp = temp -> next;
+        else
+        { // moving the head to the new head and adjusting the new head -> next and adjusting the next of the last node
+            node *temp = head;
+            while (temp->next != head)
+            { // because the list is linked at the end to the head again so there is no "nullptr"
+                temp = temp->next;
             }
 
             newnode->next = head;
@@ -76,125 +86,156 @@ class cLinkedList{
         }
     }
 
-    void AddFromTail(int data){
-        node* newnode = new node();
-        newnode -> data = data;
+    void AddFromTail(int data)
+    {
+        node *newnode = new node();
+        newnode->data = data;
 
-        if( is_empty() ){
+        if (is_empty())
+        {
             AddFromHead(data);
         }
 
-        else{
-            
-            /* 
+        else
+        {
+
+            /*
             we need to adjust the old tail -> next to be pointing to the new tail
             and we need to make the new tail -> next to point at the head
             */
-            
-            node* temp = head;
-            while(temp -> next != head ){ // because the list is linked at the end to the head again so there is no "nullptr"
-                temp = temp -> next;
+
+            node *temp = head;
+            while (temp->next != head)
+            { // because the list is linked at the end to the head again so there is no "nullptr"
+                temp = temp->next;
             }
 
-            temp -> next = newnode;
-            newnode -> next = head;
+            temp->next = newnode;
+            newnode->next = head;
         }
-
     }
 
-    void DeleteFromHead(){
-        
-        if( is_empty() ){ return void( cout << "the List is Empty\n"); }
-        
+    void DeleteFromHead()
+    {
+
+        if (is_empty())
+        {
+            return void(cout << "the List is Empty\n");
+        }
+
         /*
             we need to move the head one step forward and make the tail point to the new head and delete the old head
         */
 
-        else if(head -> next == head){
+        else if (head->next == head)
+        {
             delete head;
             head = nullptr;
         }
 
-       else{
-            node* delptr = head;
-            node* temp = head;
-            while(temp -> next != head ){ // because the list is linked at the end to the head again so there is no "nullptr"
-                temp = temp -> next;
+        else
+        {
+            node *delptr = head;
+            node *temp = head;
+            while (temp->next != head)
+            { // because the list is linked at the end to the head again so there is no "nullptr"
+                temp = temp->next;
             }
 
-            head = head -> next;
-            temp -> next = head;
+            head = head->next;
+            temp->next = head;
             delete delptr;
         }
     }
 
-    void DeleteFromTail(){
-        if( is_empty() ){ return void( cout << "the List is Empty\n"); }
+    void DeleteFromTail()
+    {
+        if (is_empty())
+        {
+            return void(cout << "the List is Empty\n");
+        }
 
-        else if(head -> next == head) DeleteFromHead();
+        else if (head->next == head)
+            DeleteFromHead();
 
-        else{
+        else
+        {
             /*
                 we need to link the new tail to the head and remove the old tail
             */
-           node* prevdelptr = head;
-           while(prevdelptr -> next -> next != head){
-            prevdelptr = prevdelptr ->next;
-           }
-           delete prevdelptr -> next;
-           prevdelptr -> next = head;
+            node *prevdelptr = head;
+            while (prevdelptr->next->next != head)
+            {
+                prevdelptr = prevdelptr->next;
+            }
+            delete prevdelptr->next;
+            prevdelptr->next = head;
         }
     }
 
-    void DeleteAtValue(int data){
-        if( is_empty() ){ return void( cout << "the List is Empty\n"); }
+    void DeleteAtValue(int data)
+    {
+        if (is_empty())
+        {
+            return void(cout << "the List is Empty\n");
+        }
 
-        else if(head -> data == data) {
+        else if (head->data == data)
+        {
             DeleteFromHead();
             return;
         }
 
-        else{
-            node* delptr = head->next;
-            node* prev = head;
+        else
+        {
+            node *delptr = head->next;
+            node *prev = head;
 
-            while(delptr != head && delptr -> data != data){
+            while (delptr != head && delptr->data != data)
+            {
                 prev = delptr;
-                delptr = delptr -> next;
+                delptr = delptr->next;
             }
 
-            if(delptr -> data == data){
-                prev -> next = delptr -> next;
+            if (delptr->data == data)
+            {
+                prev->next = delptr->next;
                 delete delptr;
                 return;
             }
 
-            return void ( cout << "Value : " << data << " not found in the list.\n" );
-
+            return void(cout << "Value : " << data << " not found in the list.\n");
         }
     }
 
-    void SearchForValue(int data){
-        if(is_empty()){ return void( cout << "the list is empty\n" ); }
-        if(!found(data)) return void( cout << "the value doesn't exist.\n" );
+    void SearchForValue(int data)
+    {
+        if (is_empty())
+        {
+            return void(cout << "the list is empty\n");
+        }
+        if (!found(data))
+            return void(cout << "the value doesn't exist.\n");
 
-        node* temp = head;
-        while(temp -> next != head && temp -> data != data){
-            temp = temp -> next;
+        node *temp = head;
+        while (temp->next != head && temp->data != data)
+        {
+            temp = temp->next;
         }
 
-        return void ( cout << "the value : \"" << data << "\" is found !\n" );
-
+        return void(cout << "the value : \"" << data << "\" is found !\n");
     }
 
-    ~cLinkedList(){
-        while(!is_empty()){
+    ~cLinkedList()
+    {
+        while (!is_empty())
+        {
             DeleteFromHead();
         }
     }
-
 };
 
-int main(){
+int main()
+{
     cLinkedList CLL;
 }
