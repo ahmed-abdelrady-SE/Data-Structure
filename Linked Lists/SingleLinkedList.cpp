@@ -152,6 +152,12 @@ class LinkedList{
         cout << "\n";
     }
 
+    ~LinkedList(){
+        while(!is_empty()){
+            DeleteFromHead();
+        }
+    }
+
 };
 
 int main(){

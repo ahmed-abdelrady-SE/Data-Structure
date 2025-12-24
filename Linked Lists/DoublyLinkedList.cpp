@@ -183,6 +183,11 @@ class DLinkedList{
         cout << "\n";
     }
 
+    ~DLinkedList(){
+        while(!is_empty()){
+            DeleteFromHead();
+        }
+    }
 
 };
 
