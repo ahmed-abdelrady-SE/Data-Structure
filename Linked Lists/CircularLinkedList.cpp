@@ -185,7 +185,6 @@ class cLinkedList{
 
         return void ( cout << "the value : \"" << data << "\" is found !\n" );
 
-
     }
 
     ~cLinkedList(){

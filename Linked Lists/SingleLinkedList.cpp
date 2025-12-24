@@ -76,9 +76,11 @@ class LinkedList{
     void DeleteFromHead(){
         if(is_empty()){ return void( cout << "the list is empty\n" ); }
         else {
+
             node* delptr = head;
             head = head->next;
             delete delptr;
+            
         }        
     }
 

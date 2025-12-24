@@ -122,6 +122,7 @@ class DLinkedList{
                 }
                 delptr->prev->next = nullptr;
             }
+            
             delete delptr;
         }
     }
@@ -180,7 +181,7 @@ class DLinkedList{
             cout << temp->data << " ";
             temp = temp->next;
         }
-        
+
         cout << "\n";
     }
 
