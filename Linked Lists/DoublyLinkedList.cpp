@@ -50,9 +50,9 @@ class DLinkedList{
         return cnt;
     }
 
-    void AddFromHead(int value){
+    void AddFromHead(int data){
         node* newnode = new node();
-        newnode -> data = value;
+        newnode -> data = data;
 
         if(is_empty()){  // case 1 the list is empty
             newnode->next = nullptr;
