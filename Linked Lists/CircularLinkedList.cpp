@@ -188,6 +188,12 @@ class cLinkedList{
 
     }
 
+    ~cLinkedList(){
+        while(!is_empty()){
+            DeleteFromHead();
+        }
+    }
+
 };
 
 int main(){
