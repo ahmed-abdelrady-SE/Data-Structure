@@ -26,6 +26,10 @@ class Stack_LL{
         return !top;
     }
 
+    bool is_full(){
+        
+    }
+
     void push(int data){
         node* newnode = new node();
         newnode->data = data;
@@ -45,7 +49,7 @@ class Stack_LL{
     }
 
     void print(){
-        
+
     }
 
 };
