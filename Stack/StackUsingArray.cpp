@@ -19,9 +19,14 @@ public:
         return top == -1;
     }
 
+    bool is_full()
+    {
+        return top == MAX_SIZE - 1;
+    }
+
     void push(int data)
     {
-        if (top == MAX_SIZE - 1)
+        if (is_full())
         {
             cout << "the stack is full\n";
             return;
