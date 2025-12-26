@@ -86,3 +86,9 @@ void BFS(int startNode, vector<int> adj[], int totalNodes) {
     }
     cout << endl;
 }
+
+## 📂 Project Structure
+
+* `QueueArray.cpp`: Implementation using a fixed-size array (ideal for memory-constrained environments).
+* `QueueLinkedList.cpp`: Implementation using a dynamic linked list (provides flexible sizing).
+
