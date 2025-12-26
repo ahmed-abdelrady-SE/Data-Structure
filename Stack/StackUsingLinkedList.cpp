@@ -1,59 +1,107 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class node{
+class node
+{
 
-    public:
-
+public:
     int data;
-    node* next;
+    node *next;
 
-    node(){
+    node()
+    {
         data = 0;
         next = nullptr;
     }
 };
 
-class Stack_LL{
-    public:
-
-    node* top;
-    Stack_LL(){
+class Stack_LL
+{
+public:
+    node *top;
+    Stack_LL()
+    {
         top = nullptr;
     }
 
-    bool is_empty(){
+    bool is_empty()
+    {
         return !top;
     }
 
-    bool is_full(){
-        
-    }
-
-    void push(int data){
-        node* newnode = new node();
+    void push(int data)
+    {
+        node *newnode = new node();
         newnode->data = data;
-        
+        newnode->next = top;
+        top = newnode;
     }
 
-    void pop(){
-
+    void pop()
+    {
+        if (is_empty())
+        {
+            return void(cout << "the stack is empty\n");
+        }
+        else
+        {
+            node *delptr = top;
+            top = top->next;
+            delete delptr;
+        }
     }
 
-    int peek(){
-
+    int peek()
+    {
+        if (is_empty())
+        {
+            cout << "The stack is empty\n";
+            return -1;
+        }
+        return top->data;
     }
 
-    int size(){
-
+    int size()
+    {
+        if (is_empty())
+        {
+            cout << "the stack is empty\n";
+            return 0;
+        }
+        else
+        {
+            node *temp = top;
+            int cnt = 0;
+            while (temp != nullptr)
+            {
+                cnt++;
+                temp = temp->next;
+            }
+            return cnt;
+        }
     }
 
-    void print(){
-
+    void print()
+    {
+        node *temp = top;
+        while (temp != nullptr)
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << "\n";
     }
 
+    ~Stack_LL()
+    {
+        while (!is_empty())
+        {
+            pop();
+        }
+    }
 };
 
-int main(){
-
+int main()
+{
+    Stack_LL stack;
 }

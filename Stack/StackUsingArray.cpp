@@ -68,6 +68,14 @@ public:
         }
         cout << "\n";
     }
+
+    ~Stack_array()
+    {
+        while (!is_empty())
+        {
+            pop();
+        }
+    }
 };
 
 int main()
