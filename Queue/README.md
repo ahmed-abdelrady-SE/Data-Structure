@@ -1,90 +1,88 @@
-# Data Structures: Queue Implementation (C++)
+# Data Structures: Circular Queue Implementation (C++)
 
-This repository contains a comprehensive implementation of the **Queue** data structure using two fundamental approaches: **Static Array** and **Dynamic Linked List**. 
+This repository contains an optimized implementation of the **Queue** data structure. To maximize memory efficiency, the array-based version is implemented as a **Circular Queue**.
 
-## 📌 What is a Queue?
+## 📌 What is a Circular Queue?
 
-A **Queue** is a linear data structure that operates on the **FIFO (First-In, First-Out)** principle. This means that the first element added to the queue will be the first one to be removed, similar to a real-world line of customers.
+A **Circular Queue** is an advanced version of the standard queue where the last position is connected back to the first position to make a circle. 
+
+### **Why use a Circular Queue? (Solving Memory Waste)**
+In a standard **Linear Queue**, once an element is dequeued, that space becomes "dead space" and cannot be reused even if the queue is not full. The Circular Queue solves this by "cycling" back to the beginning of the array when the end is reached, ensuring every slot is utilized.
 
 
-### **The FIFO Principles:**
-* **Front:** The reference point for the first element in the queue. All deletions (**Dequeue**) happen here.
-* **Rear (Tail):** The reference point for the last element in the queue. All additions (**Enqueue**) happen here.
-* **Strict Order:** Elements are processed in the exact order they arrive, ensuring fairness and sequential processing.
+
+---
+
+## 🔄 The Queue Cycle (Modulo Arithmetic)
+
+The "magic" that makes the queue circular is the **Modulo Operator (%)**. Instead of simply incrementing the `Front` and `Rear` pointers, we use the following formulas to allow them to "wrap around" the array:
+
+* **Enqueue Cycle:** `rear = (rear + 1) % MAX_SIZE`
+* **Dequeue Cycle:** `front = (front + 1) % MAX_SIZE`
+
+This ensures that if the `rear` is at the last index and we add an element, it jumps back to index `0` if it's empty.
+
+### **Key Conditions:**
+* **Queue Empty:** When `front == -1`.
+* **Queue Full:** When the next position of `rear` is `front`: `(rear + 1) % MAX_SIZE == front`.
 
 ---
 
 ## 🛠 Supported Operations
 
-Both the Array-based and Linked List-based implementations support the following core operations:
-
 | Operation | Description | Time Complexity |
 | :--- | :--- | :--- |
-| `enqueue(data)` | Appends a new element to the **Rear** of the queue. | `O(1)` |
-| `dequeue()` | Removes the element from the **Front** of the queue. | `O(1)` |
-| `peek()` | Retrieves the **Front** element without removing it. | `O(1)` |
-| `size()` | Returns the current number of elements in the queue. | `O(1)` |
-| `print()` | Traverses and displays all elements from Front to Rear. | `O(n)` |
+| `enqueue(data)` | Adds an element to the next available circular slot. | `O(1)` |
+| `dequeue()` | Removes the front element and cycles the front pointer. | `O(1)` |
+| `peek()` | Views the element currently at the front. | `O(1)` |
+| `size()` | Calculates elements between front and rear. | `O(1)` |
+| `print()` | Traverses the queue from front to rear circularly. | `O(n)` |
 
 ---
 
 ## 🚀 Real-World Applications
 
-### **1. Process Scheduling**
-Operating Systems use queues to manage tasks waiting for CPU time. In **Round Robin Scheduling**, processes are kept in a FIFO queue. The CPU takes the process at the front, executes it for a brief moment, and if it's not finished, it puts it back at the rear of the queue.
+### **1. CPU Scheduling (Round Robin)**
+Operating systems use circular queues to give each process a fixed time slot. Once a process's time is up, it is moved to the back of the circular queue to wait for its next turn.
 
-### **2. Buffering**
-Queues act as buffers in scenarios where data is transmitted asynchronously (e.g., IO Buffers, video streaming, or printer spools). The queue holds the data until the receiving device is ready to process it, preventing data loss.
+### **2. Interrupt Handling**
+In hardware systems, circular queues (often called **Ring Buffers**) handle incoming data interrupts to ensure data is processed in the exact order it was received without losing any packets.
 
 ---
 
 ## 🕸 Breadth-First Search (BFS) - Deep Dive
 
-**Breadth-First Search (BFS)** is the most significant application of the Queue data structure in graph theory. It is an algorithm used for traversing or searching tree or graph data structures.
+**BFS** is the primary algorithm for traversing graphs level-by-level. It relies heavily on a queue to keep track of nodes that are discovered but not yet processed.
 
-### **The Concept**
-Unlike Depth-First Search (DFS), which follows a branch as far as possible before backtracking, BFS explores the neighbor nodes first, before moving to the next level neighbors. It explores the graph **level by level**.
+### **The BFS Logic:**
+1.  Enqueue the starting node and mark it as visited.
+2.  While the queue is not empty:
+    * Dequeue a node.
+    * Enqueue all its unvisited neighbors.
+    * Mark them as visited.
 
-### **Why a Queue?**
-The Queue is the engine of BFS. It ensures that all nodes at distance $k$ from the starting node are visited before any nodes at distance `k+1`. By enqueuing neighbors as we discover them, the FIFO property naturally maintains the "level-by-level" order.
 
-
-### **BFS Algorithm Implementation:**
 
 ```cpp
-/**
- * BFS Implementation using a Queue
- * This algorithm visits all vertices reachable from a starting node.
- */
 void BFS(int startNode, vector<int> adj[], int totalNodes) {
-    // 1. Initialize a boolean visited array to keep track of visited nodes
     vector<bool> visited(totalNodes, false);
+    Queue_Circular q; // Array-based Circular Queue
 
-    // 2. Create our custom Queue (Linked List or Array based)
-    Queue_LL q; 
-
-    // 3. Mark the starting node as visited and enqueue it
     visited[startNode] = true;
     q.enqueue(startNode);
 
-    cout << "BFS Traversal starting from node " << startNode << ": " << endl;
-
     while (!q.is_empty()) {
-        // 4. Dequeue a vertex from the front and print it
-        int currNode = q.peek();
-        cout << currNode << " ";
+        int curr = q.peek();
         q.dequeue();
+        cout << curr << " ";
 
-        // 5. Get all adjacent vertices of the current node
-        for (int neighbor : adj[currNode]) {
-            // 6. If an adjacent node has not been visited, mark it visited and enqueue it
+        for (int neighbor : adj[curr]) {
             if (!visited[neighbor]) {
                 visited[neighbor] = true;
                 q.enqueue(neighbor);
             }
         }
     }
-    cout << endl;
 }
 
 ```
