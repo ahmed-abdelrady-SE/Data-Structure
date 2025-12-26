@@ -46,7 +46,7 @@ Queues act as buffers in scenarios where data is transmitted asynchronously (e.g
 Unlike Depth-First Search (DFS), which follows a branch as far as possible before backtracking, BFS explores the neighbor nodes first, before moving to the next level neighbors. It explores the graph **level by level**.
 
 ### **Why a Queue?**
-The Queue is the engine of BFS. It ensures that all nodes at distance $k$ from the starting node are visited before any nodes at distance $k+1$. By enqueuing neighbors as we discover them, the FIFO property naturally maintains the "level-by-level" order.
+The Queue is the engine of BFS. It ensures that all nodes at distance $k$ from the starting node are visited before any nodes at distance `k+1`. By enqueuing neighbors as we discover them, the FIFO property naturally maintains the "level-by-level" order.
 
 
 ### **BFS Algorithm Implementation:**
