@@ -118,12 +118,14 @@ string reverse_string(string s)
 bool check_balance(string s)
 {
     Stack_LL st;
-    st.push(s[0]); // to push the first "("
+    st.push(s[0]); // to push the first "(" or "{" or "["
     for (int i = 1; i < s.size(); i++)
     {
         /*
-            we had two cases while pushing eathir the stack is empty which mean we deleted all duplicates so we gonna push again with no worries
-            or there is still duplicates so we had to check for the top element
+            We have two cases while pushing: either the stack is empty,
+            which means we have matched all previous brackets so we push
+            the current bracket, or the stack still has open brackets
+            so we check if the current one matches the top element.
         */
 
         if (st.is_empty())
@@ -149,9 +151,68 @@ bool check_balance(string s)
         return false;
 }
 
-string infix_to_postfix(string infix)
+int priority(char op)
+{ // priority for the operator in the infix
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    if (op == '^')
+        return 3;
+    return 0;
+}
+
+string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
 {
-    
+    Stack_LL st;
+    string postfix = "";
+
+    for (char &c : infix)
+    {
+
+        if (isdigit(c))
+        {
+            postfix += c;
+        }
+
+        else if (c == '(')
+        {
+            st.push(c);
+        }
+
+        else if (c == ')')
+        {
+
+            while (!st.is_empty() && st.peek() != '(')
+            {
+                postfix += st.peek();
+                st.pop();
+            }
+
+            if (!st.is_empty())
+                st.pop();
+        }
+
+        else
+        {
+
+            while (!st.is_empty() && st.peek() != '(' && priority(st.peek()) >= priority(c))
+            {
+                postfix += st.peek();
+                st.pop();
+            }
+
+            st.push(c);
+        }
+    }
+
+    while (!st.is_empty())
+    {
+        postfix += st.peek();
+        st.pop();
+    }
+
+    return postfix;
 }
 
 int postfix_eval(string postfix)
