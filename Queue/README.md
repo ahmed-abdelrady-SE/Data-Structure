@@ -7,7 +7,6 @@ This repository contains a comprehensive implementation of the **Queue** data st
 A **Queue** is a linear data structure that operates on the **FIFO (First-In, First-Out)** principle. This means that the first element added to the queue will be the first one to be removed, similar to a real-world line of customers.
 
 
-
 ### **The FIFO Principles:**
 * **Front:** The reference point for the first element in the queue. All deletions (**Dequeue**) happen here.
 * **Rear (Tail):** The reference point for the last element in the queue. All additions (**Enqueue**) happen here.
@@ -21,11 +20,11 @@ Both the Array-based and Linked List-based implementations support the following
 
 | Operation | Description | Time Complexity |
 | :--- | :--- | :--- |
-| `enqueue(data)` | Appends a new element to the **Rear** of the queue. | $O(1)$ |
-| `dequeue()` | Removes the element from the **Front** of the queue. | $O(1)$ |
-| `peek()` | Retrieves the **Front** element without removing it. | $O(1)$ |
-| `size()` | Returns the current number of elements in the queue. | $O(1)$ |
-| `print()` | Traverses and displays all elements from Front to Rear. | $O(n)$ |
+| `enqueue(data)` | Appends a new element to the **Rear** of the queue. | `O(1)` |
+| `dequeue()` | Removes the element from the **Front** of the queue. | `O(1)` |
+| `peek()` | Retrieves the **Front** element without removing it. | `O(1)` |
+| `size()` | Returns the current number of elements in the queue. | `O(1)` |
+| `print()` | Traverses and displays all elements from Front to Rear. | `O(n)` |
 
 ---
 
@@ -48,7 +47,6 @@ Unlike Depth-First Search (DFS), which follows a branch as far as possible befor
 
 ### **Why a Queue?**
 The Queue is the engine of BFS. It ensures that all nodes at distance $k$ from the starting node are visited before any nodes at distance $k+1$. By enqueuing neighbors as we discover them, the FIFO property naturally maintains the "level-by-level" order.
-
 
 
 ### **BFS Algorithm Implementation:**
