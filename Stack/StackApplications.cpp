@@ -165,13 +165,13 @@ int priority(char op)
 string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
 {
 
-    /* 
+    /*
         Logic for Infix to Postfix Conversion :
         1. Operands (Numbers): Add directly to the postfix string.
         2. Left Parenthesis '(': Push onto the stack to start a new priority scope.
         3. Right Parenthesis ')': Pop and append to postfix until '(' is encountered.
         4. Operators (+, -, *, /):
-            - Pop and append operators from the stack as long as they have 
+            - Pop and append operators from the stack as long as they have
                 HIGHER or EQUAL priority than the current operator.
             - Push the current operator onto the stack.
         5. Cleanup: After the loop, pop all remaining operators from the stack.
@@ -229,7 +229,44 @@ string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
 
 int postfix_eval(string postfix)
 {
-    
+    Stack_LL st;
+
+    for (int i = 0; i < postfix.size(); i++)
+    {
+        if (postfix[i] == ' ')
+            continue;
+
+        if (isdigit(postfix[i]))
+        {
+            int num = 0;
+            while (i < postfix.size() && isdigit(postfix[i]))
+            {
+                num = num * 10 + (postfix[i] - '0'), i++;
+            }
+
+            st.push(num);
+            i--;
+        }
+        else
+        {
+            int second = st.peek();
+            st.pop();
+            int first = st.peek();
+            st.pop();
+
+            if (postfix[i] == '+')
+                st.push(first + second);
+            else if (postfix[i] == '-')
+                st.push(first - second);
+            else if (postfix[i] == '*')
+                st.push(first * second);
+            else if (postfix[i] == '/')
+                st.push(first / second);
+            else
+                st.push(pow(first, second));
+        }
+    }
+    return st.peek();
 }
 
 int main()
