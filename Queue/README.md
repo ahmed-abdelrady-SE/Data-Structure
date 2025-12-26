@@ -89,6 +89,6 @@ void BFS(int startNode, vector<int> adj[], int totalNodes) {
 
 ## 📂 Project Structure
 
-* `QueueArray.cpp`: Implementation using a fixed-size array (ideal for memory-constrained environments).
-* `QueueLinkedList.cpp`: Implementation using a dynamic linked list (provides flexible sizing).
+* `QueueCircularArray.cpp`: Implementation of the Circular Queue logic using a fixed-size array.
+* `QueueLinkedList.cpp`: Implementation using a dynamic linked list (Naturally dynamic, no wrap-around needed).
 
