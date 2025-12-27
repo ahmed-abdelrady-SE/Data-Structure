@@ -43,11 +43,17 @@ This ensures that if the `rear` is at the last index and we add an element, it j
 ## 🚀 Real-World Applications
 
 ### **1. CPU Scheduling **
-Operating systems use circular queues to give each process a fixed time slot. Once a process's time is up, it is moved to the back of the circular queue to wait for its next turn.
+In operating systems, queues are used to manage the order of tasks waiting for the central processing unit (CPU).
+When multiple programs or processes are running at the same time, the operating system places them in a ready
+queue. The scheduler then takes the first process from the queue and allocates the CPU to it. Once the process
+is complete or its time slice expires, it’s either removed from the queue or placed back at the end, ensuring every
+process gets a fair share of CPU time.
 
 ### **2. Interrupt Handling**
-In hardware systems, circular queues (often called **Ring Buffers**) handle incoming data interrupts to ensure data is processed in the exact order it was received without losing any packets.
-
+Queues are widely used for data buffering, particularly in streaming and I/O operations. When you stream music
+or a video online, data packets are downloaded and stored in a buffer queue. The media player takes packets from
+the front of this queue to play them, while new packets are added to the back. This ensures a smooth playback
+experience even with minor network fluctuations, as the player always has a small reserve of data ready to go.
 ---
 
 ## 🕸 Breadth-First Search (BFS)
