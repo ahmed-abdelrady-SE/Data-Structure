@@ -42,7 +42,7 @@ This ensures that if the `rear` is at the last index and we add an element, it j
 
 ## 🚀 Real-World Applications
 
-### **1. CPU Scheduling (Round Robin)**
+### **1. CPU Scheduling **
 Operating systems use circular queues to give each process a fixed time slot. Once a process's time is up, it is moved to the back of the circular queue to wait for its next turn.
 
 ### **2. Interrupt Handling**
@@ -50,7 +50,7 @@ In hardware systems, circular queues (often called **Ring Buffers**) handle inco
 
 ---
 
-## 🕸 Breadth-First Search (BFS) - Deep Dive
+## 🕸 Breadth-First Search (BFS)
 
 **BFS** is the primary algorithm for traversing graphs level-by-level. It relies heavily on a queue to keep track of nodes that are discovered but not yet processed.
 
