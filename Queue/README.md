@@ -57,8 +57,6 @@ or a video online, data packets are downloaded and stored in a buffer queue. The
 the front of this queue to play them, while new packets are added to the back. This ensures a smooth playback
 experience even with minor network fluctuations, as the player always has a small reserve of data ready to go.
 
----
-
 ## 🕸 Breadth-First Search (BFS)
 
 **BFS** is the primary algorithm for traversing graphs level-by-level. It relies heavily on a queue to keep track of nodes that are discovered but not yet processed.
