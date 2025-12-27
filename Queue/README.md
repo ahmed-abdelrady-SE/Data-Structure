@@ -49,6 +49,8 @@ queue. The scheduler then takes the first process from the queue and allocates t
 is complete or its time slice expires, it’s either removed from the queue or placed back at the end, ensuring every
 process gets a fair share of CPU time.
 
+---
+
 ### **2. Interrupt Handling**
 Queues are widely used for data buffering, particularly in streaming and I/O operations. When you stream music
 or a video online, data packets are downloaded and stored in a buffer queue. The media player takes packets from
