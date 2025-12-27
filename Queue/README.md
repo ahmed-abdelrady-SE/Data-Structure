@@ -42,14 +42,13 @@ This ensures that if the `rear` is at the last index and we add an element, it j
 
 ## 🚀 Real-World Applications
 
-### **1. CPU Scheduling **
+### **1. CPU Scheduling**
 In operating systems, queues are used to manage the order of tasks waiting for the central processing unit (CPU).
 When multiple programs or processes are running at the same time, the operating system places them in a ready
 queue. The scheduler then takes the first process from the queue and allocates the CPU to it. Once the process
 is complete or its time slice expires, it’s either removed from the queue or placed back at the end, ensuring every
 process gets a fair share of CPU time.
 
----
 
 ### **2. Interrupt Handling**
 Queues are widely used for data buffering, particularly in streaming and I/O operations. When you stream music
