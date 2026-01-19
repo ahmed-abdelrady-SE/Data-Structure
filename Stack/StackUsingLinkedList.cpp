@@ -9,9 +9,9 @@ public:
     T data;
     node<T> *next;
 
-    node()
+    node(T val)
     {
-        data = 0;
+        data = val;
         next = nullptr;
     }
 };
@@ -56,8 +56,7 @@ public:
     {
         if (is_empty())
         {
-            cout << "The stack is empty\n";
-            return -1;
+            throw runtime_error("the stack is empty");
         }
         return top->data;
     }

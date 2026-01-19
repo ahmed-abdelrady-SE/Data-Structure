@@ -130,7 +130,7 @@ string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
 
 int postfix_eval(string postfix)
 {
-    Stack_LL<char> st;
+    Stack_LL<int> st;
 
     for (int i = 0; i < postfix.size(); i++)
     {
