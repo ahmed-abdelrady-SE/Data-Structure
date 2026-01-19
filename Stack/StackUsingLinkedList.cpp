@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template <typename T>
 class node
 {
 
 public:
-    int data;
-    node *next;
+    T data;
+    node<T> *next;
 
     node()
     {
@@ -14,11 +15,11 @@ public:
         next = nullptr;
     }
 };
-
+template <typename T>
 class Stack_LL
 {
 public:
-    node *top;
+    node<T> *top;
     Stack_LL()
     {
         top = nullptr;
@@ -29,9 +30,9 @@ public:
         return !top;
     }
 
-    void push(int data)
+    void push(T data)
     {
-        node *newnode = new node();
+        node<T> *newnode = new node();
         newnode->data = data;
         newnode->next = top;
         top = newnode;
@@ -45,13 +46,13 @@ public:
         }
         else
         {
-            node *delptr = top;
+            node<T> *delptr = top;
             top = top->next;
             delete delptr;
         }
     }
 
-    int peek()
+    T peek()
     {
         if (is_empty())
         {
@@ -70,7 +71,7 @@ public:
         }
         else
         {
-            node *temp = top;
+            node<T> *temp = top;
             int cnt = 0;
             while (temp != nullptr)
             {
@@ -83,7 +84,7 @@ public:
 
     void print()
     {
-        node *temp = top;
+        node<T> *temp = top;
         while (temp != nullptr)
         {
             cout << temp->data << " ";
@@ -103,5 +104,5 @@ public:
 
 int main()
 {
-    Stack_LL stack;
+    Stack_LL<int> stack;
 }

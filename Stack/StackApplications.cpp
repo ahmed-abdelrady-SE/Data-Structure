@@ -4,7 +4,7 @@ using namespace std;
 
 string reverse_string(string s)
 {
-    Stack_LL st;
+    Stack_LL<char> st;
     for (char &c : s)
         st.push(c);
     string reversed = "";
@@ -18,7 +18,7 @@ string reverse_string(string s)
 
 bool check_balance(string s)
 {
-    Stack_LL st;
+    Stack_LL<char> st;
     st.push(s[0]); // to push the first "(" or "{" or "["
     for (int i = 1; i < s.size(); i++)
     {
@@ -77,7 +77,7 @@ string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
             - Push the current operator onto the stack.
         5. Cleanup: After the loop, pop all remaining operators from the stack.
     */
-    Stack_LL st;
+    Stack_LL<char> st;
     string postfix = "";
 
     for (char &c : infix)
@@ -130,7 +130,7 @@ string infix_to_postfix(string infix) // 1+(2*3)+4 => 123*+4+
 
 int postfix_eval(string postfix)
 {
-    Stack_LL st;
+    Stack_LL<char> st;
 
     for (int i = 0; i < postfix.size(); i++)
     {
@@ -172,5 +172,5 @@ int postfix_eval(string postfix)
 
 int main()
 {
-    Stack_LL stack;
+    Stack_LL<char> stack;
 }
