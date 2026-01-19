@@ -22,9 +22,6 @@ The "magic" that makes the queue circular is the **Modulo Operator (%)**. Instea
 
 This ensures that if the `rear` is at the last index and we add an element, it jumps back to index `0` if it's empty.
 
-### **Key Conditions:**
-* **Queue Empty:** When `front == -1`.
-* **Queue Full:** When the next position of `rear` is `front`: `(rear + 1) % MAX_SIZE == front`.
 
 ---
 
@@ -56,6 +53,7 @@ Queues are widely used for data buffering, particularly in streaming and I/O ope
 or a video online, data packets are downloaded and stored in a buffer queue. The media player takes packets from
 the front of this queue to play them, while new packets are added to the back. This ensures a smooth playback
 experience even with minor network fluctuations, as the player always has a small reserve of data ready to go.
+---
 
 ## 🕸 Breadth-First Search (BFS)
 
