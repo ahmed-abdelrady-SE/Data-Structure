@@ -32,7 +32,7 @@ public:
 
     void push(T data)
     {
-        node<T> *newnode = new node();
+        node<T> *newnode = new node<T>();
         newnode->data = data;
         newnode->next = top;
         top = newnode;
@@ -101,8 +101,3 @@ public:
         }
     }
 };
-
-int main()
-{
-    Stack_LL<int> stack;
-}
