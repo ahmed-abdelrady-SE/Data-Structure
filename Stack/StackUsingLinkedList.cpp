@@ -32,8 +32,7 @@ public:
 
     void push(T data)
     {
-        node<T> *newnode = new node<T>();
-        newnode->data = data;
+        node<T> *newnode = new node<T>(data);
         newnode->next = top;
         top = newnode;
     }
