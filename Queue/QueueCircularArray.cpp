@@ -62,6 +62,36 @@ public:
         return arr[front];
     }
 
+    int search(int target)
+    {
+        int pos = -1;
+        if (is_empty())
+        {
+            cout << "the queue is empty\n";
+        }
+        else if (target == arr[rear])
+            return rear;
+
+        else
+        {
+            for (int i = front; i != rear; i = (i + 1) % MAX_SIZE)
+            {
+                if (arr[i] == target)
+                {
+                    pos = i;
+                    break;
+                }
+            }
+        }
+
+        if (pos == -1)
+        {
+            cout << "the item is not found in the queue\n";
+        }
+
+        return pos;
+    }
+
     int size()
     {
         return count;

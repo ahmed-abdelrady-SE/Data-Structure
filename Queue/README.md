@@ -29,7 +29,7 @@ This ensures that if the `rear` is at the last index and we add an element, it j
 
 | Operation | Description | Time Complexity |
 | :--- | :--- | :--- |
-| `enqueue(data)` | Adds an element to the next available circular slot. | `O(1)` |
+| `enqueue(data)` | Adds an element to the next available circular slot. | `O(1)` with array and `O(n)` with Linked list |
 | `dequeue()` | Removes the front element and cycles the front pointer. | `O(1)` |
 | `peek()` | Views the element currently at the front. | `O(1)` |
 | `size()` | Calculates elements between front and rear. | `O(1)` |
