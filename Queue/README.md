@@ -71,7 +71,7 @@ experience even with minor network fluctuations, as the player always has a smal
 ```cpp
 void BFS(int startNode, vector<int> adj[], int totalNodes) {
     vector<bool> visited(totalNodes, false);
-    Queue_Circular q; // Array-based Circular Queue
+    circularqueue q;; // Array-based Circular Queue
 
     visited[startNode] = true;
     q.enqueue(startNode);
