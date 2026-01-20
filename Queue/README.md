@@ -53,7 +53,7 @@ Queues are widely used for data buffering, particularly in streaming and I/O ope
 or a video online, data packets are downloaded and stored in a buffer queue. The media player takes packets from
 the front of this queue to play them, while new packets are added to the back. This ensures a smooth playback
 experience even with minor network fluctuations, as the player always has a small reserve of data ready to go.
----
+
 
 ## 🕸 Breadth-First Search (BFS)
 
